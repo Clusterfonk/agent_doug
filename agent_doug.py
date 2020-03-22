@@ -1,6 +1,7 @@
-import discord
 from discord.ext import commands
 import sys
+import os
+
 
 __BOT = commands.Bot(command_prefix='!', description='General Purpose Bot')
 
@@ -25,14 +26,8 @@ async def add(ctx, left: int, right: int):
     await ctx.send(left + right)
 
 
-def load_token():
-    try:
-        with open("/.config/discord_bot_token") as token_file:
-            return token_file.read()
-    except FileNotFoundError as error:
-        sys.exit(error.errno)
-
-
 if __name__ == '__main__':
-    token = load_token()
+    token = os.getenv("DISCORD_TOKEN")
+    if token is None:
+        sys.exit(-1)
     __BOT.run(token)

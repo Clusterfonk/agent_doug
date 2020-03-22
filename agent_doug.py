@@ -27,7 +27,7 @@ async def add(ctx, left: int, right: int):
 
 
 if __name__ == '__main__':
-    load_dotenv('/.config/discord_config.env')
+    load_dotenv('/.config/discord.env')
     token = os.getenv('DISCORD_TOKEN')
     if token is None:
         sys.exit(-1)

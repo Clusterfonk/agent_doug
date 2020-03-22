@@ -1,7 +1,7 @@
 from discord.ext import commands
+from dotenv import load_dotenv
 import sys
 import os
-
 
 __BOT = commands.Bot(command_prefix='!', description='General Purpose Bot')
 
@@ -27,7 +27,8 @@ async def add(ctx, left: int, right: int):
 
 
 if __name__ == '__main__':
-    token = os.getenv("DISCORD_TOKEN")
+    load_dotenv('/.config/discord_config.env')
+    token = os.getenv('DISCORD_TOKEN')
     if token is None:
         sys.exit(-1)
     __BOT.run(token)

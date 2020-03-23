@@ -1,4 +1,4 @@
-import logging
+# import logging
 import os
 import sys
 
@@ -9,6 +9,6 @@ def receive_token():
     load_dotenv(os.path.expanduser('~/.config/discord.env'))
     t = os.environ.get('DISCORD_TOKEN')
     if t is None:
-        logging.error('Could not read env:[DISCORD_TOKEN]. Token invalid!')
+        # logging.error('Could not read env:[DISCORD_TOKEN]. Token invalid!')
         sys.exit(-1)
     return t

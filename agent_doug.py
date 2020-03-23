@@ -22,14 +22,14 @@ def receive_token():
     load_dotenv('~/.config/discord.env')
     t = os.getenv('DISCORD_TOKEN')
     if t is None:
-        logging.error('Could not read environment variable. Token invalid!')
+        logging.error('Could not read env:[DISCORD_TOKEN]. Token invalid!')
         sys.exit(-1)
     return t
 
 
 @__BOT.event
 async def on_ready():
-    await logging.info('Started Agent Doug.')
+    logging.info('Started Agent Doug.')
 
 
 @__BOT.command()

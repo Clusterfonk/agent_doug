@@ -5,7 +5,7 @@ import os
 import logging
 
 __BOT = commands.Bot(command_prefix='!', description='General Purpose Bot')
-logging.basicConfig(filename='/.logs/discord/agent_doug.log',
+logging.basicConfig(filename='~/.logs/agent_doug.log',
                     format='%(asctime)s %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p')
 
@@ -28,7 +28,7 @@ async def add(ctx, left: int, right: int):
 
 
 if __name__ == '__main__':
-    load_dotenv('/.config/discord.env')
+    load_dotenv('~/.config/discord.env')
     token = os.getenv('DISCORD_TOKEN')
     if token is None:
         logging.error('Could not read environment variable. Token invalid!')

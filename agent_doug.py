@@ -1,13 +1,13 @@
 from discord.ext import commands
 from dotenv import load_dotenv
-import sys
-import os
+from logging.handlers import RotatingFileHandler
 import logging
+import os
+import sys
+
+
 
 __BOT = commands.Bot(command_prefix='!', description='General Purpose Bot')
-logging.basicConfig(filename='~/.logs/agent_doug.log',
-                    format='%(asctime)s %(message)s',
-                    datefmt='%m/%d/%Y %I:%M:%S %p')
 
 
 @__BOT.event
@@ -27,10 +27,24 @@ async def add(ctx, left: int, right: int):
     await ctx.send(left + right)
 
 
-if __name__ == '__main__':
+def set_up_logger():
+    logging.getLogger(__name__)
+    logging.basicConfig(
+        handlers=[RotatingFileHandler('agent_doug.log', maxBytes=2000, backupCount=10)],
+        format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+
+def load_token():
     load_dotenv('~/.config/discord.env')
-    token = os.getenv('DISCORD_TOKEN')
-    if token is None:
+    t = os.getenv('DISCORD_TOKEN')
+    if t is None:
         logging.error('Could not read environment variable. Token invalid!')
         sys.exit(-1)
-    __BOT.run(token)
+    return t
+
+
+if __name__ == '__main__':
+    set_up_logger()
+    __BOT.run(load_token())

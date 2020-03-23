@@ -20,7 +20,7 @@ def set_up_logger():
 
 
 def receive_token():
-    load_dotenv('~/.config/discord.env')
+    load_dotenv(os.path.expanduser('~/.config/discord.env'))
     t = os.environ.get('DISCORD_TOKEN')
     if t is None:
         logging.error('Could not read env:[DISCORD_TOKEN]. Token invalid!')

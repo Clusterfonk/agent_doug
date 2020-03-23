@@ -4,8 +4,6 @@ from logging.handlers import RotatingFileHandler
 
 
 def set_up_logger():
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
     logging.basicConfig(
         handlers=[RotatingFileHandler(filename=os.path.expanduser('~/.logs/agent_doug.log'),
                                       maxBytes=2000,

@@ -1,12 +1,35 @@
-import discord
 from discord.ext import commands
+from dotenv import load_dotenv
+import discord
+import os
+import sys
+from logging.handlers import RotatingFileHandler
 import logging
-
-from logger import set_up_logger
-from token import receive_token
 
 
 __CLIENT = commands.Bot(command_prefix='!', description='General Purpose Bot')
+
+
+def set_up_logger():
+    logging.getLogger(__name__)
+    logging.basicConfig(
+        handlers=[RotatingFileHandler(filename=os.path.expanduser('~/.logs/agent_doug.log'),
+                                      maxBytes=2000,
+                                      backupCount=10)
+                  ],
+        format="[%(asctime)s] [%(levelname)s] [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
+        datefmt='%Y-%m-%d %H:%M:%S',
+        level=logging.INFO
+    )
+
+
+def receive_token():
+    load_dotenv(os.path.expanduser('~/.config/discord.env'))
+    t = os.environ.get('DISCORD_TOKEN')
+    if t is None:
+        logging.error('Could not read env:[DISCORD_TOKEN]. Token invalid!')
+        sys.exit(-1)
+    return t
 
 
 @__CLIENT.event

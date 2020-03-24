@@ -31,7 +31,7 @@ async def on_member_remove(member):
 async def help(ctx):
     description = "Agent_Doug is a general purpose Bot"
     embedded_help_msg = discord.Embed(colour=discord.Colour.blue(), description=description)
-    embedded_help_msg.set_author(name="Agent_Doug", icon_url="https://i.imgur.com/lVxcNP9.png")
+    embedded_help_msg.set_author(name="Agent_Doug", icon_url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette.wikia.nocookie.net%2Fuglyamericans%2Fimages%2Fe%2Fe6%2FDoug.jpg%2Frevision%2Flatest%3Fcb%3D20110307123143&f=1&nofb=1")
     await ctx.send("", embed=embedded_help_msg)
 
 

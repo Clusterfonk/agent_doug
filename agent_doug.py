@@ -7,13 +7,14 @@ from acquire_token import receive_token
 
 __CLIENT = commands.Bot(command_prefix='!', description='General Purpose Bot',
                         status=discord.Status.online,
-                        activity=discord.Game("!help",
-                                                        type=discord.ActivityType.listening))
+                        activity=discord.Activity(name="!help",
+                                                  type=discord.ActivityType.listening))
 
 
 @__CLIENT.event
 async def on_ready():
     logging.info('Started Agent Doug.')
+
 
 @__CLIENT.event
 async def on_member_join(member):

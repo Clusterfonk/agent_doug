@@ -9,6 +9,7 @@ __CLIENT = commands.Bot(command_prefix='!', description='General Purpose Bot',
                         status=discord.Status.online,
                         activity=discord.Activity(name="!help",
                                                   type=discord.ActivityType.listening))
+__CLIENT.remove_command('help')
 
 
 @__CLIENT.event

@@ -34,7 +34,7 @@ async def help(ctx):
     )
 
     help_msg.add_field(name="", value="Agent_Doug is a general purpose Bot")
-    await ctx.send(help_msg)
+    await ctx.send({help_msg})
 
 
 # @__CLIENT.command()

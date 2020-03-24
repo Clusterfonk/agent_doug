@@ -26,6 +26,14 @@ async def on_member_remove(member):
     pass
 
 
+@__CLIENT.command(pass_context=True)
+async def help(ctx):
+    embed = discord.Embed(
+        colour=discord.Colour.blue()
+    )
+
+    embed.add_field(name="", value="Agent_Doug is a general purpose Bot")
+
 # @__CLIENT.command()
 # async def add(ctx, left: int, right: int):
 #     """Adds two numbers together."""

@@ -29,11 +29,13 @@ async def on_member_remove(member):
 
 @__CLIENT.command(pass_context=True)
 async def help(ctx):
-    embed = discord.Embed(
+    help_msg = discord.Embed(
         colour=discord.Colour.blue()
     )
 
-    embed.add_field(name="", value="Agent_Doug is a general purpose Bot")
+    help_msg.add_field(name="", value="Agent_Doug is a general purpose Bot")
+    await ctx.send(embed=help_msg)
+
 
 # @__CLIENT.command()
 # async def add(ctx, left: int, right: int):

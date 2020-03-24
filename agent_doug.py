@@ -7,7 +7,7 @@ from acquire_token import receive_token
 
 __CLIENT = commands.Bot(command_prefix='!', description='General Purpose Bot',
                         status=discord.Status.online,
-                        activity=discord.CustomActivity("Listening to !help",
+                        activity=discord.CustomActivity("!help",
                                                         type=discord.ActivityType.listening))
 
 

@@ -1,6 +1,6 @@
+from logging.handlers import RotatingFileHandler
 import logging
 import os
-from logging.handlers import RotatingFileHandler
 
 
 def set_up_logger():

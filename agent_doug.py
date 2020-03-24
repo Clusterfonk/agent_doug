@@ -2,8 +2,9 @@ import discord
 from discord.ext import commands
 import logging
 
-from logger import set_up_logger
-from token import receive_token
+
+from bot_action_logger import set_up_logger
+from acquire_token import receive_token
 
 
 __CLIENT = commands.Bot(command_prefix='!', description='General Purpose Bot')

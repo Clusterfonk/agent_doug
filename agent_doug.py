@@ -19,6 +19,7 @@ async def on_ready():
 
 @__CLIENT.event
 async def on_member_join(member):
+    print(__CLIENT.get_all_channels())
     channel = discord.utils.get(__CLIENT.get_all_channels(), guild='Birds & Co', name='nsa_channel')
     print(channel)
     if "@everyone" in member.roles:

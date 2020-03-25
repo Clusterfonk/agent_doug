@@ -46,6 +46,9 @@ class AgentDoug(commands.Bot):
                                      icon_url=self.__bot_icon_url)
         await ctx.send("", embed=embedded_help_msg)
 
+    async def add(self, ctx, left, right):
+        await ctx.send(str(int(left) + int(right)))
+
 
 if __name__ == '__main__':
     set_up_logger(__LOG_PATH)

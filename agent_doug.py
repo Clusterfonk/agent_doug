@@ -20,9 +20,10 @@ async def on_ready():
 @__CLIENT.event
 async def on_member_join(member):
     channel = discord.utils.get(__CLIENT.get_all_channels(), name='nsa_channel')
+    print("@everyone" in member.roles)
     if "@everyone" in member.roles:
         await member.edit(roles=['Guest'])
-    await channel.send("{} joined the server for the first time at {}".format(member.nick, member.joined_at))
+    await channel.send("{0} joined the server for the first time at {1}".format(member.display_name, member.joined_at))
 
 
 @__CLIENT.event

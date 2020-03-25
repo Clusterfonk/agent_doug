@@ -22,7 +22,7 @@ class BotConfigParser:
         return self.__parser['Help']['description']
 
     def get_log_channel(self):
-        return self.__parser['Logging']['nsa_channel']
+        return self.__parser['Logging']['channel_name']
 
     def get_default_role(self):
         return self.__parser['Roles']['default_role']

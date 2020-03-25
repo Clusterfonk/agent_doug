@@ -5,7 +5,7 @@ import logging
 from bot_action_logger import set_up_logger
 from acquire_token import receive_token
 
-__CLIENT = commands.Bot(command_prefix='!', description='General Purpose Bot',
+__CLIENT = commands.Bot(command_prefix='!', description='General Purpose bot',
                         status=discord.Status.online,
                         activity=discord.Activity(name="!help",
                                                   type=discord.ActivityType.listening))

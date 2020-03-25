@@ -19,7 +19,8 @@ async def on_ready():
 
 @__CLIENT.event
 async def on_member_join(member):
-    pass
+    channel = discord.utils.get(__CLIENT.get_all_channels(), guild_name='Birds & Co', name='nsa_channel')
+    await channel.send("{} joined the server for the first time.".format(member.nick))
 
 
 @__CLIENT.event
@@ -33,12 +34,6 @@ async def help(ctx):
     embedded_help_msg = discord.Embed(colour=discord.Colour.blue(), description=description)
     embedded_help_msg.set_author(name="Agent_Doug", icon_url="https://i.imgur.com/lVxcNP9.png")
     await ctx.send("", embed=embedded_help_msg)
-
-
-# @__CLIENT.command()
-# async def add(ctx, left: int, right: int):
-#     """Adds two numbers together."""
-#     await ctx.send(left + right)
 
 
 if __name__ == '__main__':

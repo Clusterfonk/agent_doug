@@ -46,7 +46,7 @@ class AgentDoug(commands.Bot):
         pass
 
     @commands.command(pass_context=True)
-    async def help(self, ctx):
+    async def abc(self, ctx):
         embedded_help_msg = discord.Embed(colour=discord.Colour.blue(),
                                           description=self.__help_description)
         embedded_help_msg.set_author(name=self.__bot_name,

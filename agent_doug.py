@@ -19,7 +19,6 @@ class AgentDoug(commands.Bot):
         self.__configure_standard_parameters(bot_config_parser)
         super().__init__(bot_config_parser.get_prefix(), **options)
         self.remove_command("help")
-        self.add_command(self.help)
 
     def __configure_standard_parameters(self, bot_config_parser):
         self.__bot_name = bot_config_parser.get_bot_name()
@@ -45,12 +44,24 @@ class AgentDoug(commands.Bot):
     async def on_member_remove(self, member):
         pass
 
+
+class HelpCog:
+    def __init__(self, bot):
+        self.__bot = bot
+
+    # @commands.command(pass_context=True)
+    # async def help(self, ctx):
+    #     embedded_help_msg = discord.Embed(colour=discord.Colour.blue(),
+    #                                       description=self.__help_description)
+    #     embedded_help_msg.set_author(name=self.__bot_name,
+    #                                  icon_url=self.__bot_icon_url)
+    #     await ctx.send("", embed=embedded_help_msg)
+
     @commands.command(pass_context=True)
-    async def abc(self, ctx):
+    async def help(self, ctx):
         embedded_help_msg = discord.Embed(colour=discord.Colour.blue(),
-                                          description=self.__help_description)
-        embedded_help_msg.set_author(name=self.__bot_name,
-                                     icon_url=self.__bot_icon_url)
+                                          description="self.__help_description")
+        embedded_help_msg.set_author(name="self.__bot_name")
         await ctx.send("", embed=embedded_help_msg)
 
 
@@ -62,4 +73,5 @@ if __name__ == '__main__':
                        status=discord.Status.online,
                        activity=discord.Activity(name="{}help".format(parser.get_prefix()),
                                                  type=discord.ActivityType.listening))
+    client.add_cog(HelpCog(client))
     client.run(receive_token(__DOTENV_PATH))

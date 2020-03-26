@@ -45,7 +45,7 @@ class AgentDoug(commands.Bot):
         pass
 
 
-class HelpCog:
+class HelpCog(commands.Cog):
     def __init__(self, bot):
         self.__bot = bot
 

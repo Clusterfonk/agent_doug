@@ -19,6 +19,7 @@ class AgentDoug(commands.Bot):
         self.__configure_standard_parameters(bot_config_parser)
         super().__init__(bot_config_parser.get_prefix(), **options)
         self.remove_command("help")
+        self.add_command(self.help.__name__)
 
     def __configure_standard_parameters(self, bot_config_parser):
         self.__bot_name = bot_config_parser.get_bot_name()
@@ -30,12 +31,16 @@ class AgentDoug(commands.Bot):
     async def on_ready(self):
         logging.info('Started {}.'.format(self.__bot_name))
 
-    async def on_member_join(self, member):
-        channel = discord.utils.get(self.get_all_channels(), name=self.__logging_channel)
+    async def assign_default_role(self, member):
         if "@everyone" in member.roles:
             await member.edit(roles=self.__default_role)
-        await channel.send(
-            "{0} joined the server for the first time at {1}".format(member.display_name, member.joined_at))
+
+    async def on_member_join(self, member):
+        channel = discord.utils.get(member.guild.channels, name=self.__logging_channel)
+        await self.assign_default_role(member)
+        if channel is not None:
+            await channel.send(
+                "{0} joined the server for the first time at {1}".format(member.display_name, member.joined_at))
 
     async def on_member_remove(self, member):
         pass

@@ -63,4 +63,5 @@ if __name__ == '__main__':
                        status=discord.Status.online,
                        activity=discord.Activity(name="{}help".format(parser.get_prefix()),
                                                  type=discord.ActivityType.listening))
+    client.add_command(client.help)
     client.run(receive_token(__DOTENV_PATH))

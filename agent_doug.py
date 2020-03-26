@@ -19,7 +19,7 @@ class AgentDoug(commands.Bot):
         self.__configure_standard_parameters(bot_config_parser)
         super().__init__(bot_config_parser.get_prefix(), **options)
         self.remove_command("help")
-        self.add_command(self.help.__name__)
+        self.add_command(self.help)
 
     def __configure_standard_parameters(self, bot_config_parser):
         self.__bot_name = bot_config_parser.get_bot_name()
@@ -45,6 +45,7 @@ class AgentDoug(commands.Bot):
     async def on_member_remove(self, member):
         pass
 
+    @commands.command()
     async def help(self, ctx):
         embedded_help_msg = discord.Embed(colour=discord.Colour.blue(),
                                           description=self.__help_description)

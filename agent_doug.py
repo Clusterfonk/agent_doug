@@ -45,7 +45,6 @@ class AgentDoug(commands.Bot):
     async def on_member_remove(self, member):
         pass
 
-    @commands.command()
     async def help(self, ctx):
         embedded_help_msg = discord.Embed(colour=discord.Colour.blue(),
                                           description=self.__help_description)

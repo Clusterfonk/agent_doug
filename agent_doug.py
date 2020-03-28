@@ -18,7 +18,6 @@ class AgentDoug(commands.Bot):
     def __init__(self, bot_config_parser, **options):
         self.__configure_standard_parameters(bot_config_parser)
         super().__init__(bot_config_parser.get_prefix(), **options)
-        self.cogs.
 
     def __configure_standard_parameters(self, bot_config_parser):
         self.__bot_name = bot_config_parser.get_bot_name()

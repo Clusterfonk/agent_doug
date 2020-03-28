@@ -18,6 +18,7 @@ class AgentDoug(commands.Bot):
     def __init__(self, bot_config_parser, **options):
         self.__configure_standard_parameters(bot_config_parser)
         super().__init__(bot_config_parser.get_prefix(), **options)
+        self.cogs.
 
     def __configure_standard_parameters(self, bot_config_parser):
         self.__bot_name = bot_config_parser.get_bot_name()
@@ -28,6 +29,7 @@ class AgentDoug(commands.Bot):
 
     async def on_ready(self):
         logging.info('Started {}.'.format(self.__bot_name))
+        print(self.cogs.get_commands(), self.cogs.qualified_name)
 
     async def assign_default_role(self, member):
         if "@everyone" in member.roles:
@@ -41,7 +43,10 @@ class AgentDoug(commands.Bot):
                 "{0} joined the server for the first time at {1}".format(member.display_name, member.joined_at))
 
     async def on_member_remove(self, member):
-        pass
+        channel = discord.utils.get(member.guild.channels, name=self.__logging_channel)
+        if channel is not None:
+            await channel.send(
+                "{0} joined the server for the first time at {1}".format(member.display_name, member.joined_at))
 
     @commands.command()
     async def help(self, ctx):
@@ -63,5 +68,4 @@ if __name__ == '__main__':
                        status=discord.Status.online,
                        activity=discord.Activity(name="{}help".format(parser.get_prefix()),
                                                  type=discord.ActivityType.listening))
-    client.add_command(client.help)
     client.run(receive_token(__DOTENV_PATH))

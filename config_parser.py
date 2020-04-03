@@ -3,7 +3,7 @@ import configparser
 
 class BotConfigParser:
     def __init__(self, ini_path):
-        self.__parser = configparser.ConfigParser()
+        self.__parser = configparser.ConfigParser(configparser.ExtendedInterpolation())
         self.__parser.read(ini_path)
 
     def get_bot_name(self):

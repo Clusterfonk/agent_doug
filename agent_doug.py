@@ -35,14 +35,14 @@ class AgentDoug(commands.Bot):
         logging.info('Started {}.'.format(self.bot_name))
 
     async def assign_default_role(self, member):
-        print(member.roles)
+        print(type(member.roles))
+        print(member.roles["name"])
         if "@everyone" in member.roles:
             await member.edit(roles=self.__default_role)
 
     async def on_member_join(self, member):
         print("member joined")
         channel = discord.utils.get(member.guild.channels, name=self.__logging_channel)
-        print(channel)
         await self.assign_default_role(member)
         if channel is not None:
             await channel.send(

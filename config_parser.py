@@ -24,6 +24,9 @@ class BotConfigParser:
     def get_log_channel(self):
         return self.__parser['Logging']['channel_name']
 
-    def get_default_role(self):
-        return self.__parser['Roles']['default_role']
+    def __new_member_role_id(self):
+        return self.__parser['Roles']['new_member_role_id']
+
+    def get_default_role_id(self):
+        return self.__parser['Roles']['default_id']
 

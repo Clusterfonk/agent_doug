@@ -25,7 +25,7 @@ class AgentDoug(commands.Bot):
         self.bot_name = bot_config_parser.get_bot_name()
         self.bot_icon_url = bot_config_parser.get_bot_icon_url()
         self.__logging_channel = bot_config_parser.get_log_channel()
-        self.__new_member_role_id = bot_config_parser.__new_member_role_id()
+        self.__new_member_role_id = bot_config_parser.get_new_member_role_id()
         self.__default_role_id = bot_config_parser.get_default_role_id()
         self.help_description = bot_config_parser.get_help_description()
 
@@ -36,7 +36,7 @@ class AgentDoug(commands.Bot):
         logging.info('Started {}.'.format(self.bot_name))
 
     async def get_default_role(self, member):
-        return discord.utils.get(member.guild.roles, id=self.__default_role_id)
+        return discord.utils.get(member.guild.roles, id=self.__new_member_role_id)
 
     async def assign_default_role(self, member):
         if self.__default_role_id in [m.id for m in member.roles]:

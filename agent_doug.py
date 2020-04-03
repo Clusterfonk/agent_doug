@@ -29,7 +29,7 @@ class AgentDoug(commands.Bot):
         self.help_description = bot_config_parser.get_help_description()
 
     def __add_cogs(self):
-        self.add_cog(Info)
+        self.add_cog(Info(self))
 
     async def on_ready(self):
         logging.info('Started {}.'.format(self.bot_name))

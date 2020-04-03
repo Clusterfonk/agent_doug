@@ -2,11 +2,8 @@ import discord
 from discord.ext import commands
 
 
-from agent_doug import AgentDoug
-
-
 class Info:
-    def __init__(self, bot: AgentDoug):
+    def __init__(self, bot):
         self.__bot = bot
 
     @commands.command(pass_context=True)

@@ -6,7 +6,7 @@ class Info(commands.Cog):
     def __init__(self, bot):
         self.__bot = bot
 
-    @commands.command(pass_context=True)
+    @commands.command()
     async def help(self, ctx):
         embedded_help_msg = discord.Embed(colour=discord.Colour.blue(),
                                           description=self.__bot.help_description)

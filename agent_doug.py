@@ -36,12 +36,14 @@ class AgentDoug(commands.Bot):
         logging.info('Started {}.'.format(self.bot_name))
 
     async def assign_default_role(self, member):
-        print([m.id for m in member.roles])
-        print(self.__default_role_id)
+        print(len(member.roles))
+        print(member.guild.roles)
+
         print(self.__default_role_id in [m.id for m in member.roles])
         if self.__default_role_id in [m.id for m in member.roles]:
             print("member being edited")
-            await member.edit(roles= discord.utils.get(member.guild.roles, id=self.__new_member_role_id))
+            print(discord.utils.get(member.guild.roles, id=self.__new_member_role_id))
+            await member.edit(roles=discord.utils.get(member.guild.roles, id=self.__new_member_role_id))
 
     async def on_member_join(self, member):
         channel = discord.utils.get(member.guild.channels, name=self.__logging_channel)

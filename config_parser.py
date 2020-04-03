@@ -7,7 +7,7 @@ class BotConfigParser:
         self.__parser.read(ini_path)
 
     def get_bot_name(self):
-        return self.__parser['Default']['icon_url']
+        return self.__parser['Default']['name']
 
     def get_bot_icon_url(self):
         return self.__parser['Default']['icon_url']

@@ -42,11 +42,11 @@ class AgentDoug(commands.Bot):
 
     async def assign_default_role(self, member):
         if await member_only_has_role(member.roles, role_id=self.__default_role_id):
-            await member.add_role(discord.utils.get(member.guild.roles, id=self.__new_member_role_id))
+            await member.add_roles(discord.utils.get(member.guild.roles, id=self.__new_member_role_id))
 
     async def on_member_join(self, member):
-        channel = discord.utils.get(member.guild.channels, name=self.__logging_channel)
         await self.assign_default_role(member)
+        channel = discord.utils.get(member.guild.channels, name=self.__logging_channel)
         if channel is not None:
             await channel.send(
                 "{0} joined the server for the first time at {1}".format(member.display_name, member.joined_at))

@@ -7,26 +7,25 @@ class BotConfigParser:
         self.__parser.read(ini_path)
 
     def get_bot_name(self):
-        return self.__parser['Default']['name']
+        return self.__parser.get('Default', 'name')
 
     def get_bot_icon_url(self):
-        return self.__parser['Default']['icon_url']
+        return self.__parser.get('Default', 'icon_url')
 
     def get_prefix(self):
-        return self.__parser['Default']['prefix']
+        return self.__parser.get('Default', 'prefix')
 
     def get_bot_description(self):
-        return self.__parser['Default']['description']
+        return self.__parser.get('Default', 'description')
 
     def get_help_description(self):
-        return self.__parser['Help']['description']
+        return self.__parser.get('Help', 'description')
 
     def get_log_channel(self):
-        return self.__parser['Logging']['channel_name']
+        return self.__parser.get('Logging', 'channel_name')
 
     def get_new_member_role_id(self):
-        return self.__parser['Roles']['new_member_id']
+        return self.__parser.getint('Roles', 'new_member_id')
 
     def get_default_role_id(self):
-        return self.__parser['Roles']['default_id']
-
+        return self.__parser.getint('Roles', 'default_id')

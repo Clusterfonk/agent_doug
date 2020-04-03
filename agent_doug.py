@@ -36,6 +36,8 @@ class AgentDoug(commands.Bot):
         logging.info('Started {}.'.format(self.bot_name))
 
     async def assign_default_role(self, member):
+        print([m.id for m in member.roles])
+        print(self.__default_role_id)
         print(self.__default_role_id in [m.id for m in member.roles])
         if self.__default_role_id in [m.id for m in member.roles]:
             print("member being edited")

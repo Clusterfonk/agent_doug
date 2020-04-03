@@ -15,6 +15,11 @@ __DOTENV_PATH = os.path.expanduser('~/.config/discord.env')
 __LOG_PATH = os.path.expanduser('~/.logs/agent_doug.log')
 
 
+async def member_only_has_role(member_roles, role_id):
+    return len(member_roles) == 1 and \
+           role_id in [m.id for m in member_roles]
+
+
 class AgentDoug(commands.Bot):
     def __init__(self, bot_config_parser, **options):
         self.__configure_standard_parameters(bot_config_parser)
@@ -36,14 +41,8 @@ class AgentDoug(commands.Bot):
         logging.info('Started {}.'.format(self.bot_name))
 
     async def assign_default_role(self, member):
-        print(len(member.roles))
-        print(member.guild.roles)
-
-        print(self.__default_role_id in [m.id for m in member.roles])
-        if self.__default_role_id in [m.id for m in member.roles]:
-            print("member being edited")
-            print(discord.utils.get(member.guild.roles, id=self.__new_member_role_id))
-            await member.edit(roles=discord.utils.get(member.guild.roles, id=self.__new_member_role_id))
+        if await member_only_has_role(member.roles, role_id=self.__default_role_id):
+            await member.add_role(discord.utils.get(member.guild.roles, id=self.__new_member_role_id))
 
     async def on_member_join(self, member):
         channel = discord.utils.get(member.guild.channels, name=self.__logging_channel)
